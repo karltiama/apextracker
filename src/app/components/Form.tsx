@@ -18,8 +18,13 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!data.points.trim() || !data.notes.trim()) {
+      alert("Please fill in all fields"); // Validation feedback
+      return;
+    }
     console.log(data);
-    // onSubmit(data);
+    onSubmit(data);
+    setData({ points: '', notes: '' }); // Clear the forms
   }
 
   return (
@@ -28,6 +33,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         className='bg-slate-500 rounded shadow-lg p-4 m-4 flex flex-col space-y-4'
         onSubmit={handleSubmit}
       >
+        <label htmlFor='points' className=''>LP Loss / Gain</label>
         <input 
           type='number'
           name='points'
@@ -35,6 +41,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
           value={data.points}
           onChange={handleChange}
         />
+        <label htmlFor='notes'>Notes About Game</label>
         <textarea
           name="notes"
           className='p-2 rounded text-black'
