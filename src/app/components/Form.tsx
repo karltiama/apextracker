@@ -22,7 +22,6 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
       alert("Please fill in all fields"); // Validation feedback
       return;
     }
-    console.log(data);
     onSubmit(data);
     setData({ points: '', notes: '' }); // Clear the forms
   }
