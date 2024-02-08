@@ -24,7 +24,13 @@ const PlayerStats: React.FC = () => {
       const data: PlayerData = await response.json();
       setPlayerData(data);
     } catch (err) {
-      setError(err.message);
+      // Check if the error is an instance of Error and has a message
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        // If not, you can set a default error message
+        setError('An unexpected error occurred');
+      }
     } finally {
       setLoading(false);
     }
