@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Form from "./components/Form";
 import GameHistory from './components/GameHistory';
 import { v4 as uuidv4 } from 'uuid';
+import PlayerStats from './components/PlayerStats';
 
 interface GameData {
   id: string;
@@ -21,8 +22,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Form onSubmit={addGame} />
-      <GameHistory games={games} />
+      {/* <Form onSubmit={addGame} />
+      <GameHistory games={games} /> */}
+      <PlayerStats />
     </main>
   );
 }
