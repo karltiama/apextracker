@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 
 // Define a type for the player data state, adjust according to the actual data structure
-interface PlayerData {
-  // Example properties, replace with the actual data structure you expect
+interface RankData {
+  rankName: string;
+  rankDiv: number;
+  rankImg: string;
+  rankScore: number;
+}
+
+interface GlobalData {
   name: string;
   level: number;
+  rank: RankData;
+}
+
+interface PlayerData {
+  // Example properties, replace with the actual data structure you expect
+  global: GlobalData;
   // Add other properties as needed
 }
 
@@ -46,22 +58,33 @@ const PlayerStats: React.FC = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='flex justify-center items-center'>
+      <form 
+        onSubmit={handleSubmit}
+        className='bg-slate-500 rounded shadow-lg p-4 m-4 flex flex-col space-y-4'
+      >
         <input
           type="text"
           placeholder="Player Name"
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}
-          className='text-black'
+          className='text-black p-2'
         />
-        <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
-          <option value="PC" className='text-black'>PC</option>
-          <option value="XBOX" className='text-black'>XBOX</option>
-          <option value="PS4" className='text-black'>PS4</option>
+        <select 
+          value={platform}
+          className='text-black p-2'
+          onChange={(e) => setPlatform(e.target.value)}>
+          <option value="PC" >PC</option>
+          <option value="XBOX" >XBOX</option>
+          <option value="PS4" >PS4</option>
           {/* Add other platforms as needed */}
         </select>
-        <button type="submit">Get Player Stats</button>
+        <button 
+          type="submit"
+          className='bg-blue-500 text-white p-2 rounded hover:bg-blue-600'
+        >
+          Get Player Stats
+        </button>
       </form>
 
       {loading && <p>Loading...</p>}
@@ -69,8 +92,13 @@ const PlayerStats: React.FC = () => {
       {playerData && (
         <div>
           <h3>Player Data:</h3>
+          <h2>{playerData.global.name}</h2>
+          <p>Level : {playerData.global.level}</p>
+          <p>Rank : {playerData.global.rank.rankName} (Division {playerData.global.rank.rankDiv})</p>
+          <p>{playerData.global.rank.rankScore} LP</p>
+          <img src={playerData.global.rank.rankImg} alt="Rank" />
           {/* Display player data here. Adjust according to the data structure */}
-          <pre>{JSON.stringify(playerData, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(playerData, null, 2)}</pre> */}
         </div>
       )}
     </div>
