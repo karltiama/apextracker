@@ -58,7 +58,7 @@ const PlayerStats: React.FC = () => {
   };
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex flex-col justify-center items-center'>
       <form 
         onSubmit={handleSubmit}
         className='bg-slate-500 rounded shadow-lg p-4 m-4 flex flex-col space-y-4'
@@ -90,16 +90,14 @@ const PlayerStats: React.FC = () => {
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {playerData && (
-        <div>
-          <h3>Player Data:</h3>
-          <h2>{playerData.global.name}</h2>
-          <p>Level : {playerData.global.level}</p>
-          <p>Rank : {playerData.global.rank.rankName} (Division {playerData.global.rank.rankDiv})</p>
-          <p>{playerData.global.rank.rankScore} LP</p>
-          <img src={playerData.global.rank.rankImg} alt="Rank" />
-          {/* Display player data here. Adjust according to the data structure */}
-          {/* <pre>{JSON.stringify(playerData, null, 2)}</pre> */}
-        </div>
+        <div className='mt-8 bg-white rounded-lg shadow-lg p-6 space-y-4'>
+        <h3 className='text-2xl font-bold text-gray-800'>Player Data:</h3>
+        <h2 className='text-xl font-semibold text-gray-700'>{playerData.global.name}</h2>
+        <p className='text-gray-600'>Level: <span className='font-semibold'>{playerData.global.level}</span></p>
+        <p className='text-gray-600'>Rank: <span className='font-semibold'>{playerData.global.rank.rankName} (Division {playerData.global.rank.rankDiv})</span></p>
+        <p className='text-gray-600'>{playerData.global.rank.rankScore} LP</p>
+        <img src={playerData.global.rank.rankImg} alt="Rank" className='mx-auto'/>
+      </div>
       )}
     </div>
   );

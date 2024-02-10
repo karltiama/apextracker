@@ -22,9 +22,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <PlayerStats />
       {/* <Form onSubmit={addGame} />
       <GameHistory games={games} /> */}
-      <PlayerStats />
     </main>
   );
 }
