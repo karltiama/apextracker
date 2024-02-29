@@ -11,9 +11,8 @@ import RedBlock from './components/RedBlock';
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col">
-        <Header />
-        
+    <main className="flex flex-col min-h-screen">
+        <h1>Hi, Im Karl and I love working with the React Ecosystem and teaching and redefining my core conepts through mental models</h1>
     </main>
   );
 }
