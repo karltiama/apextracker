@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const Header = () => {
   return (
@@ -13,7 +14,7 @@ const Header = () => {
             <Link href="/shorts" className='hover:text-gray-300'>Shorts</Link>
           </div>
           <div>
-            <div>Icon</div>
+            <ThemeToggleButton/>
           </div>
         </div>
       </section>
