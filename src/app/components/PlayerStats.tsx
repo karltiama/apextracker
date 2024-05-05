@@ -136,14 +136,27 @@ const PlayerStats: React.FC = () => {
 						</span>
 					</p>
 					<p className="text-gray-600">{playerData.global.rank.rankScore} LP</p>
-					<img
-						src={playerData.global.rank.rankImg}
-						alt="Rank"
-						className="mx-auto"
-					/>
-					<p className="text-gray-600">
-						{playerData.legends.selected.LegendName}
-					</p>
+					<div>
+						<img
+							src={playerData.global.rank.rankImg}
+							alt="Rank"
+							className="mx-auto"
+						/>
+						<p className="text-gray-600">
+							{playerData.legends.selected.LegendName}
+						</p>
+						<img
+							src={playerData.legends.selected.ImgAssets.icon}
+							alt="Rank"
+							className="mx-auto"
+						/>
+						<p className="text-gray-600">
+							{/* {playerData.legends.selected.data[0].name} */}
+						</p>
+						<p className="text-gray-600">
+							{/* {playerData.legends.selected.data[0].value} */}
+						</p>
+					</div>
 				</div>
 			)}
 		</div>
